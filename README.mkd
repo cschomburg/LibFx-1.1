@@ -1,0 +1,68 @@
+LibFx-1.1
+===============
+
+Animations! And these actually work ... unlike Blizz' ones
+
+Core API
+--------
+
+### FxObject = LibFx.New(FxTable) ###
+Creates a new fx-object
+*	FxTable = table holding options
+
+### LibFx:RegisterAnimation(name, func, startFunc) ###
+Registers a new animation for use within LibFx
+
+*	name = Name of animation
+*	get = Function for getting the initial value
+*	set = Function for setting the value the statusbar texture (default "ADD")
+
+### LibFx:RegisterRamp(name, func) ###
+	Registers a new ramp for use within LibFx
+
+*	name = Name of ramp
+*	func = Function which returns the value to use
+
+FxTable / FxObject options
+----------------
+*	anim: String or table which holds the animation
+*	ramp: String or table how the animation should progress (default: Linear)
+*	frame: The frame which should be animated
+*	onStart: Optional function which is called on startup  with func(frame, fxObject)
+*	onComplete: Optional function which is called on stop with func(frame, fxObject)
+
+FxObject functions
+------------------
+### fx:Start() ###
+Starts the animation
+
+### fx:Stop()
+Stops the animation
+
+### fx:IsRunning()
+Returns whether the animation is running
+
+Default animations
+------------------
+*	Alpha: Fade the frame to the value of fxTable.finish
+*	Scale: Scale the frame to the value of fxTable.finish
+*	Height: Set the frame's height to the value of fxTable.finish
+*	Width: Set the frame's width to the value of fxTable.finish
+*	Translate: Move the frame by fxTable.xOffset and fxTable.yOffset
+
+Default ramps
+-------------
+*	Linear: A linear curve
+*	Smooth:	A logistic curve
+
+Example
+-------
+	local LFX = LibStub("LibFx-1.1")
+	local fadeFrame = LFX.New{
+		frame = MyFrame,
+		anim = "Alpha",
+		ramp = "Smooth",
+		finish = 0,
+		duration = 0.3,
+	}
+Fades out MyFrame in 0.3 seconds by using a logistic / smooth curve.
