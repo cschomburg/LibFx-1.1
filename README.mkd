@@ -18,7 +18,7 @@ Registers a new animation for use within LibFx
 *	set = Function for setting the value the statusbar texture (default "ADD")
 
 ### LibFx:RegisterRamp(name, func) ###
-	Registers a new ramp for use within LibFx
+Registers a new ramp for use within LibFx
 
 *	name = Name of ramp
 *	func = Function which returns the value to use

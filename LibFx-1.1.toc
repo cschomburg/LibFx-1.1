@@ -5,7 +5,6 @@
 ## X-eMail: xconstruct@gmail.com
 ## X-Website: http://www.xconstruct.net
 ## Notes: Animations! And these actually work ... unlike Blizz' ones
-## OptionalDeps: cargoShip
 
 LibStub.lua
 LibFx-1.1.lua
