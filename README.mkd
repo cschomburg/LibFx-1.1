@@ -8,6 +8,7 @@ Core API
 
 ### FxObject = LibFx.New(FxTable) ###
 Creates a new fx-object
+
 *	FxTable = table holding options
 
 ### LibFx:RegisterAnimation(name, func, startFunc) ###
@@ -28,6 +29,7 @@ FxTable / FxObject options
 *	anim: String or table which holds the animation
 *	ramp: String or table how the animation should progress (default: Linear)
 *	frame: The frame which should be animated
+*	delay: time in seconds before the animation should start (default: 0)
 *	onStart: Optional function which is called on startup  with func(frame, fxObject)
 *	onComplete: Optional function which is called on stop with func(frame, fxObject)
 
