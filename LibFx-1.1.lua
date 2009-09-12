@@ -2,6 +2,8 @@
 Name: LibFx-1.1
 Author: Cargor (xconstruct@gmail.com)
 Dependencies: LibStub
+License: GPL 2
+Description: Animations! And these actually work ... unlike Blizz' ones
 ]]
 
 local MAJOR, MINOR = "LibFx-1.1", 1
