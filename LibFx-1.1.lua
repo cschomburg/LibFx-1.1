@@ -6,7 +6,7 @@ License: GPL 2
 Description: Animations! And these actually work ... unlike Blizz' ones
 ]]
 
-local MAJOR, MINOR = "LibFx-1.1", 2
+local MAJOR, MINOR = "LibFx-1.1", 3
 local LibFx = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not LibFx then return end
@@ -125,9 +125,9 @@ function updateFrame:Update(elapsed)
 			local diff = fx.rDelay-elapsed
 			fx.rDelay = diff > 0 and diff or nil
 		end
-		if(not fx.delay) then
+		if(not fx.rDelay) then
 			fx.runTime = fx.runTime + elapsed
-			local progress = max(min((fx.runTime-fx.startDelay)/fx.duration, 1), 0)
+			local progress = max(min(fx.runTime/fx.duration, 1), 0)
 			fx.progress = fx.ramp and fx.ramp(progress) or progress
 			fx.anim.Set(fx)
 			if(fx.runTime > fx.duration) then
