@@ -6,13 +6,17 @@ License: GPL 2
 Description: Animations! And these actually work ... unlike Blizz' ones
 ]]
 
-local MAJOR, MINOR = "LibFx-1.1", 3
+local MAJOR, MINOR = "LibFx-1.1", 4
 local LibFx = LibStub:NewLibrary(MAJOR, MINOR)
-
 if not LibFx then return end
 
 local ramps, anims, running = {}, {}, {}
 local numRunning = 0
+
+local mt = {
+__index = LibFx,
+__call = function(self, ...) self:Start() end,
+}
 
 
 --[[*****************************
@@ -60,10 +64,6 @@ end
 	Creates a new fx-object
 	-	fx = table holding options
 *******************************]]
-local mt = {
-__index = LibFx,
-__call = function(self, ...) self:Start() end,
-}
 function LibFx.New(fx)
 	assert(fx, MAJOR..": No fx-table specified")
 	fx = setmetatable(fx, mt)
@@ -169,10 +169,17 @@ end, function(fx)
 end)
 
 LibFx.RegisterAnimation("Width", function(fx)
-	fx.start = fx.frame:SetWidth()
+	fx.start = fx.frame:GetWidth()
 	fx.diff = fx.finish - fx.start
 end, function(fx)
-	fx.frame:GetWidth(fx.start + fx.diff * fx.progress)
+	fx.frame:SetWidth(fx.start + fx.diff * fx.progress)
+end)
+
+LibFx.RegisterAnimation("Rotate", function(fx)
+	fx.start = fx.frame:GetRotation()
+	fx.diff = (fx.rad or rad(fx.deg)) - fx.start
+end, function(fx)
+	fx.frame:SetRotation(fx.start + fx.diff * fx.progress)
 end)
 
 LibFx.RegisterAnimation("Translate", function(fx)

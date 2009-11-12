@@ -50,6 +50,7 @@ Default animations
 *	Scale: Scale the frame to the value of fxTable.finish
 *	Height: Set the frame's height to the value of fxTable.finish
 *	Width: Set the frame's width to the value of fxTable.finish
+*	Rotate: Rotate the frame by the value of fxTable.rad (radians) or fxTable.deg (degrees)
 *	Translate: Move the frame by fxTable.xOffset and fxTable.yOffset
 
 Default ramps
