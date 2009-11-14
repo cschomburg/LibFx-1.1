@@ -6,7 +6,7 @@ License: GPL 2
 Description: Animations! And these actually work ... unlike Blizz' ones
 ]]
 
-local MAJOR, MINOR = "LibFx-1.1", 4
+local MAJOR, MINOR = "LibFx-1.1", 5
 local LibFx = LibStub:NewLibrary(MAJOR, MINOR)
 if not LibFx then return end
 
@@ -15,7 +15,7 @@ local numRunning = 0
 
 local mt = {
 __index = LibFx,
-__call = function(self, ...) self:Start() end,
+__call = function(self) self:Start() end,
 }
 
 
@@ -104,6 +104,7 @@ function LibFx.Stop(fx)
 	running[fx] = nil
 	if(fx.onComplete) then fx.onComplete(fx.frame, fx) end
 	if(numRunning == 0) then LibFx.Updater:Hide() end
+	if(fx.loop) then fx:Start() end
 end
 
 --[[*****************************
@@ -145,6 +146,7 @@ LibFx.Updater = updateFrame
 --[[*****************************
 	Default functions
 *******************************]]
+LibFx.RegisterRamp("Linear", function(percent) return percent end)
 LibFx.RegisterRamp("Smooth", function(percent) return 1/(1+2.7^(-percent*12+6)) end)
 
 LibFx.RegisterAnimation("Alpha", function(fx)
@@ -176,7 +178,7 @@ end, function(fx)
 end)
 
 LibFx.RegisterAnimation("Rotate", function(fx)
-	fx.start = fx.frame:GetRotation()
+	fx.start = 0
 	fx.diff = (fx.rad or rad(fx.deg)) - fx.start
 end, function(fx)
 	fx.frame:SetRotation(fx.start + fx.diff * fx.progress)
