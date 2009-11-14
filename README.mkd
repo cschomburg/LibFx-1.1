@@ -30,6 +30,7 @@ FxTable / FxObject options
 *	ramp: String or table how the animation should progress (default: Linear)
 *	frame: The frame which should be animated
 *	delay: time in seconds before the animation should start (default: 0)
+*	loop: Start the animation again after it stopped (default: nil)
 *	onStart: Optional function which is called on startup  with func(frame, fxObject)
 *	onComplete: Optional function which is called on stop with func(frame, fxObject)
 
@@ -52,6 +53,7 @@ Default animations
 *	Width: Set the frame's width to the value of fxTable.finish
 *	Rotate: Rotate the frame by the value of fxTable.rad (radians) or fxTable.deg (degrees)
 *	Translate: Move the frame by fxTable.xOffset and fxTable.yOffset
+*	VertexColor: Change the color of the texture to fxTable.r, fxTable.g, fxTable.b
 
 Default ramps
 -------------

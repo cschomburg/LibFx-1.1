@@ -197,7 +197,7 @@ end, function(fx)
 end)
 
 LibFx.RegisterAnimation("VertexColor", function(fx)
-	fx.sR, fx.sG, fx.sB = = fx.frame:GetVertexColor()
+	fx.sR, fx.sG, fx.sB = fx.frame:GetVertexColor()
 	fx.dR, fx.dG, fx.dB = fx.r-fx.sR, fx.g-fx.sG, fx.b-fx.sB
 end, function(fx)
 	fx.frame:SetVertexColor(fx.sR+fx.dR*fx.progress, fx.sG+fx.dG*fx.progress, fx.sB+fx.dB*fx.progress)
